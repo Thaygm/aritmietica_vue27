@@ -14,7 +14,7 @@
 
     <div>
       <label for="operacao">Operação:</label>
-      <select id="operacao" v-model="selectedoperacao">
+      <select id="operacao" v-model="selectdaOperacao">
         <option value="add">Somar </option>
         <option value="subtract">Subtrair </option>
         <option value="multiply">Multiplicar </option>
@@ -28,7 +28,7 @@
 
     <div>
       <label for="resultado">Resultado:</label>
-      <input type="text" id="result" v-model="result" readonly>
+      <input type="text" id="resultado" v-model="resultado" readonly>
     </div>
   </div>
 </template>
@@ -39,26 +39,26 @@ new Vue({
       data: {
         numero1: 0,
         numero2: 0,
-        selectedOperation: 'add',
-        result: ''
+        selectdaOperacao: 'add',
+        resultado: ''
       },
       methods: {
         calculate() {
-          switch (this.selectedOperation) {
+          switch (this.selectdaOperacao) {
             case 'add':
-              this.result = this.numero1 + this.numero2;
+              this.resultado = this.numero1 + this.numero2;
               break;
             case 'subtract':
-              this.result = this.numero1 - this.numero2;
+              this.resultado = this.numero1 - this.numero2;
               break;
             case 'multiply':
-              this.result = this.numero1 * this.numero2;
+              this.resultado = this.numero1 * this.numero2;
               break;
             case 'divide':
-              this.result = this.numero1 / this.numero2;
+              this.resultado = this.numero1 / this.numero2;
               break;
             default:
-              this.result = '';
+              this.resultado = '';
           }
         }
       }
@@ -66,5 +66,4 @@ new Vue({
 </script>
 
 <style>
-
 </style>
