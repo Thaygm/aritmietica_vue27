@@ -1,78 +1,70 @@
 <template>
-  <div class="calculator">
-    <div class="screen">{{ display }}</div>
-    <div class="buttons">
-      <button v-for="button in buttons" :key="button" @click="handleClick(button)">{{ button }}</button>
-      <button @click="calculate()">=</button>
-      <button @click="clear()">C</button>
+ <div id="app">
+    <h2>Calculadora VUE</h2>
+
+    <div>
+      <label for="number1">Número 1:</label>
+      <input type="number" id="number1" v-model="number1">
+    </div>
+
+    <div>
+      <label for="number2">Número 2:</label>
+      <input type="number" id="number2" v-model="number2">
+    </div>
+
+    <div>
+      <label for="operation">Operação:</label>
+      <select id="operation" v-model="selectedOperation">
+        <option value="add">Soma (+)</option>
+        <option value="subtract">Subtração (-)</option>
+        <option value="multiply">Multiplicação (*)</option>
+        <option value="divide">Divisão (/)</option>
+      </select>
+    </div>
+
+    <div>
+      <button @click="calculate">Calcular</button>
+    </div>
+
+    <div>
+      <label for="result">Resultado:</label>
+      <input type="text" id="result" v-model="result" readonly>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      display: "",
-      buttons: ["1", "2", "3", "-", "4", "5", "6", "+", "7", "8", "9", "*", "0", ".", "%", "/", "√"],
-    };
-  },
-  methods: {
-    handleClick(button) {
-      this.display += button;
-    },
-    calculate() {
-      try {
-        this.display = eval(this.display).toString();
-      } catch (error) {
-        this.display = "";
+new Vue({
+      el: '#app',
+      data: {
+        number1: 0,
+        number2: 0,
+        selectedOperation: 'add',
+        result: ''
+      },
+      methods: {
+        calculate() {
+          switch (this.selectedOperation) {
+            case 'add':
+              this.result = this.number1 + this.number2;
+              break;
+            case 'subtract':
+              this.result = this.number1 - this.number2;
+              break;
+            case 'multiply':
+              this.result = this.number1 * this.number2;
+              break;
+            case 'divide':
+              this.result = this.number1 / this.number2;
+              break;
+            default:
+              this.result = '';
+          }
+        }
       }
-    },
-    clear() {
-      this.display = "";
-    },
-  },
-};
+    });
 </script>
 
 <style>
-.calculator {
-  width: 300px;
-  margin: auto;
-  border: 1px solid #19A7CE;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0px 0px 5px 0px #19A7CE;
-}
 
-.screen {
-  height: 50px;
-  margin-bottom: 10px;
-  background-color: #FEFF86;
-  border: 1px solid #19A7CE;
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 24px;
-  text-align: right;
-}
-
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  background-color: #146C94;
-}
-
-button {
-  height: 50px;
-  background-color: #B0DAFF;
-  border: none;
-  border-radius: 10px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #19A7CE;
-}
 </style>
