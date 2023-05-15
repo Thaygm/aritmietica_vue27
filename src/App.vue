@@ -3,31 +3,31 @@
     <h2>Calculadora VUE</h2>
 
     <div>
-      <label for="number1">Número 1:</label>
-      <input type="number" id="number1" v-model="number1">
+      <label for="numero1">Número 1:</label>
+      <input type="numero" id="numero1" v-model="numero1">
     </div>
 
     <div>
-      <label for="number2">Número 2:</label>
-      <input type="number" id="number2" v-model="number2">
+      <label for="numero2">Número 2:</label>
+      <input type="numero" id="numero2" v-model="numero2">
     </div>
 
     <div>
-      <label for="operation">Operação:</label>
-      <select id="operation" v-model="selectedOperation">
-        <option value="add">Soma (+)</option>
-        <option value="subtract">Subtração (-)</option>
-        <option value="multiply">Multiplicação (*)</option>
-        <option value="divide">Divisão (/)</option>
+      <label for="operacao">Operação:</label>
+      <select id="operacao" v-model="selectedoperacao">
+        <option value="add">Somar </option>
+        <option value="subtract">Subtrair </option>
+        <option value="multiply">Multiplicar </option>
+        <option value="divide">Dividir </option>
       </select>
     </div>
 
     <div>
-      <button @click="calculate">Calcular</button>
+      <button @click="calcular">Calcular</button>
     </div>
 
     <div>
-      <label for="result">Resultado:</label>
+      <label for="resultado">Resultado:</label>
       <input type="text" id="result" v-model="result" readonly>
     </div>
   </div>
@@ -37,8 +37,8 @@
 new Vue({
       el: '#app',
       data: {
-        number1: 0,
-        number2: 0,
+        numero1: 0,
+        numero2: 0,
         selectedOperation: 'add',
         result: ''
       },
@@ -46,16 +46,16 @@ new Vue({
         calculate() {
           switch (this.selectedOperation) {
             case 'add':
-              this.result = this.number1 + this.number2;
+              this.result = this.numero1 + this.numero2;
               break;
             case 'subtract':
-              this.result = this.number1 - this.number2;
+              this.result = this.numero1 - this.numero2;
               break;
             case 'multiply':
-              this.result = this.number1 * this.number2;
+              this.result = this.numero1 * this.numero2;
               break;
             case 'divide':
-              this.result = this.number1 / this.number2;
+              this.result = this.numero1 / this.numero2;
               break;
             default:
               this.result = '';
