@@ -1,8 +1,8 @@
 <script setup>
 import { reactive } from 'vue';
-import cabecalho from './components/cabecalho.vue';
-import operacao from './components/operacao.vue';
-import resultado from './components/resultado.vue';
+import Cabecalho from './components/Cabecalho.vue';
+import Operacao from './components/Operacao.vue';
+import Resultado from './components/Resultado.vue';
 
 const estado = reactive({
   operation: '+',
@@ -28,8 +28,9 @@ const resultado = ()=> {
 <template>
   <body>
     <div class="container">
-      <cabecalho />
-      <operacao :operacao="evento=> estado.operation = evento.target.value" :numero1="evento => estado.numero1 = evento.target.value" :numero2="evento => estado.numero2 = evento.target.value"></operacao>
+      <Cabecalho />
+      <Operacao :operacao="evento=> estado.operation = evento.target.value" :numero1="evento => estado.numero1 = evento.target.value" :numero2="evento => estado.numero2 = evento.target.value"></Operacao>
+      <Resultado :numero1="estado.numero1" :numero2="estado.numero2" :result="resultado()"/>
     </div>
   </body>
 </template>
